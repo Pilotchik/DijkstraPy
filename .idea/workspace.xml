@@ -26,7 +26,7 @@
       <file leaf-file-name="dijkstra.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/dijkstra.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="131" column="0" selection-start="4739" selection-end="4739" vertical-scroll-proportion="0.73333335" vertical-offset="2552" max-vertical-offset="4180">
+            <state line="167" column="21" selection-start="5892" selection-end="5892" vertical-scroll-proportion="0.37677053" vertical-offset="3408" max-vertical-offset="4444">
               <folding>
                 <element signature="e#54#75#0" expanded="true" />
               </folding>
@@ -37,7 +37,7 @@
       <file leaf-file-name="vertices_and_links.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/vertices_and_links.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="13" selection-start="439" selection-end="439" vertical-scroll-proportion="0.0" vertical-offset="66" max-vertical-offset="814">
+            <state line="22" column="13" selection-start="439" selection-end="439" vertical-scroll-proportion="0.0" vertical-offset="484" max-vertical-offset="814">
               <folding />
             </state>
           </provider>
@@ -59,10 +59,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
+    <option name="x" value="1358" />
     <option name="y" value="-8" />
-    <option name="width" value="1382" />
-    <option name="height" value="744" />
+    <option name="width" value="1296" />
+    <option name="height" value="1000" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -276,8 +276,8 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
+    <frame x="1358" y="-8" width="1296" height="1000" extended-state="6" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -287,7 +287,7 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23233908" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16573349" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -315,6 +315,38 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/dijkstra.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="131" column="0" selection-start="4739" selection-end="4739" vertical-scroll-proportion="0.0" vertical-offset="132" max-vertical-offset="4180">
+          <folding>
+            <element signature="e#54#75#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vertices_and_links.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="13" selection-start="439" selection-end="439" vertical-scroll-proportion="0.0" vertical-offset="484" max-vertical-offset="814">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dijkstra.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="131" column="0" selection-start="4739" selection-end="4739" vertical-scroll-proportion="0.0" vertical-offset="66" max-vertical-offset="4180">
+          <folding>
+            <element signature="e#54#75#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vertices_and_links.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="13" selection-start="439" selection-end="439" vertical-scroll-proportion="0.0" vertical-offset="484" max-vertical-offset="814">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/vertices_and_links.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="22" column="13" selection-start="439" selection-end="439" vertical-scroll-proportion="0.0" vertical-offset="66" max-vertical-offset="814">
@@ -324,7 +356,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/dijkstra.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="131" column="0" selection-start="4739" selection-end="4739" vertical-scroll-proportion="0.73333335" vertical-offset="2552" max-vertical-offset="4180">
+        <state line="167" column="21" selection-start="5892" selection-end="5892" vertical-scroll-proportion="0.37677053" vertical-offset="3408" max-vertical-offset="4444">
           <folding>
             <element signature="e#54#75#0" expanded="true" />
           </folding>

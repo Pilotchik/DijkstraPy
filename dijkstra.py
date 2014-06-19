@@ -3,6 +3,7 @@ __author__ = 'Александр Кудрявцев'
 #импорт библиотек
 from tkinter import *
 import itertools
+import math
 from random import randrange
 from vertices_and_links import *
 
@@ -26,8 +27,12 @@ def reset():
     canv.delete("lines")
     canv.delete("labels")
 
+    #сгенерировать строку из номеров всех вершин
+    vert_string = ""
+    for i in range(vert_count):
+        vert_string += str(i)
     #генерация линий
-    for i in itertools.combinations('012345',2):
+    for i in itertools.combinations(vert_string,2):
         if randrange(0,2):
             linkcost = randrange(1,10)
             if linkcost > 5:
@@ -42,6 +47,8 @@ def reset():
 
     #отрисовка вершин поверх линий
     for item in vert_array:
+        #удалить метки со стоимостью перехода
+        canv.delete("label"+str(item.number))
         #обнуление стоимости всех вершин
         item.cost = 9999
         item.hold = 0
@@ -110,7 +117,7 @@ def play():
         attempts += 1
 
         if attempts > len(vert_array) + 1:
-            lbl["text"] = "Не все вершины удалось обойти"
+            lbl["text"] = "Готово"
             break
 
         min_length = 9999
@@ -127,8 +134,10 @@ def play():
             if neighbors[0].hold == 0:
                 if start_vertex.cost + neighbors[1] < neighbors[0].cost:
                     neighbors[0].cost = start_vertex.cost + neighbors[1]
+                    #удалить старую метку
+                    canv.delete("label"+str(neighbors[0].number))
                     #добавить текст со стоимостью перехода в вершину
-                    canv.create_text(neighbors[0].x - 15, neighbors[0].y - 20, text = str(neighbors[0].cost), tag = "labels", font = "Arial 14", fill = "red")
+                    canv.create_text(neighbors[0].x - 15, neighbors[0].y - 20, text = str(neighbors[0].cost), tag = "label"+str(neighbors[0].number), font = "Arial 14", fill = "red")
 
         start_vertex.hold = 1
 
@@ -136,26 +145,29 @@ def play():
 
 #создание окна для размещения вершин графа 
 root = Tk() 
-root.geometry("450x500+350+150")
-root.title("Dijkstra algorithm") 
+root.geometry("600x600+300+0")
+root.title("Dijkstra algorithm")
   
 #холст для вершин графа
-canv = Canvas(root, width = 450,height = 380, bg = "white") 
+canv = Canvas(root, width = 600,height = 500, bg = "white")
 canv.pack()
 
 #порядковый номер вершины для обращения к ней по тегу
 vert_number = 0
+
+vert_count = 20
 #создание вершины
-y = 20
-for i in range(3):
-    x = 10
-    for j in range(4):
-        if ((i == 0 or i == 2) and (j == 1 or j == 2)) or (i == 1 and (j == 0 or j == 3)):
-            obj = Vertex(9999,x+15,y+15,vert_number)
-            vert_array.append(obj)
-            vert_number += 1
-        x += 135
-    y += 160
+while not(vert_count < 10 and vert_count > 0):
+    vert_count = int(input("Количество вершин:"))
+#найти координаты точек, где будут находится центры вершин
+#поделить 360 градусов на количество вершин - это шаг угла (в градусах)
+vert_grad = 360 // vert_count
+for grad in range(0, 360, vert_grad):
+    x = math.cos(grad*(math.pi/180))*200 + 300
+    y = math.sin(grad*(math.pi/180))*200 + 250
+    obj = Vertex(9999,x+15,y+15,vert_number)
+    vert_array.append(obj)
+    vert_number += 1
 
 #Добавление надписи
 lbl = Label(root)
