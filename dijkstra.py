@@ -6,19 +6,69 @@ import itertools
 import math
 from random import randrange
 from vertices_and_links import *
+from tkinter.messagebox import *
 
 #Значения по умолчанию
 #массив с вершинами
 vert_array = []
 #массив с связями
 link_array = []
-
+#количество вершин
+vert_count = 10
+#идентификатор текстового поля для установления количества вершин
+count_ent = 0
 #текущий шаг
 step = 0
+win1 = 0
+
+#функция отображения информации о программе
+def about():
+    showinfo("Информация","Визуализатор алгоритма Дейкстры\nВсе права защищены\n2014 год")
+
+def settings_change():
+    global vert_count
+    vert_count = int(count_ent.get())
+    if not(vert_count < 10 and vert_count > 0):
+        showinfo("Ошибка","Количество вершин не должно превышать 10 и быть меньше 0")
+    else:
+        win1.destroy()
+
+#изменение настроек приложения
+def settings():
+    global win1,count_ent
+    win1 = Toplevel()
+    #win1.configure("100x100")
+    Label(win1, text="Введите количество вершин").grid(row=0,column=0,sticky=W,columnspan=2)
+    count_ent = Entry(win1, width=5)
+    count_ent.grid(row=1, column=0)
+    Button(win1, text="Установить", command=settings_change).grid(row=1, column=1)
+
 
 #отрисовка линий между вершинами
 def reset():
-    global canv, link_array
+    global canv, link_array,vert_array,vert_count
+
+    #порядковый номер вершины для обращения к ней по тегу
+    vert_number = 0
+
+    #удалить овалы
+    for item in vert_array:
+        #удалить метки со стоимостью перехода
+        canv.delete("vert"+str(item.number))
+
+    #обнулить массив с вершинами
+    vert_array = []
+
+    #создание вершины
+    #найти координаты точек, где будут находится центры вершин
+    #поделить 360 градусов на количество вершин - это шаг угла (в градусах)
+    vert_grad = 360 // vert_count
+    for grad in range(0, 360, vert_grad):
+        x = math.cos(grad*(math.pi/180))*200 + 300
+        y = math.sin(grad*(math.pi/180))*200 + 250
+        obj = Vertex(9999,x+15,y+15,vert_number)
+        vert_array.append(obj)
+        vert_number += 1
 
     #очистка массива со связями
     link_array = []
@@ -127,8 +177,6 @@ def play():
                 next_vertex = neighbors[0]
                 min_length = neighbors[1]
 
-        print(next_vertex)
-
         #проход по соседям и пересчёт стоимости перехода в них
         for neighbors in getNeighbors(start_vertex):
             if neighbors[0].hold == 0:
@@ -151,23 +199,6 @@ root.title("Dijkstra algorithm")
 #холст для вершин графа
 canv = Canvas(root, width = 600,height = 500, bg = "white")
 canv.pack()
-
-#порядковый номер вершины для обращения к ней по тегу
-vert_number = 0
-
-vert_count = 20
-#создание вершины
-while not(vert_count < 10 and vert_count > 0):
-    vert_count = int(input("Количество вершин:"))
-#найти координаты точек, где будут находится центры вершин
-#поделить 360 градусов на количество вершин - это шаг угла (в градусах)
-vert_grad = 360 // vert_count
-for grad in range(0, 360, vert_grad):
-    x = math.cos(grad*(math.pi/180))*200 + 300
-    y = math.sin(grad*(math.pi/180))*200 + 250
-    obj = Vertex(9999,x+15,y+15,vert_number)
-    vert_array.append(obj)
-    vert_number += 1
 
 #Добавление надписи
 lbl = Label(root)
@@ -192,5 +223,21 @@ btn2.pack()
 
 #добавить слушателя на клик мыши 
 root.bind("<Button-1>", click)
+
+#инициализация меню для главного окна
+m = Menu(root)
+#указать главному окну, как называется меню
+root.config(menu = m)
+
+#создание элемента меню главного меню
+fm = Menu(m)
+#добавить на главное меню раскрывающееся меню
+m.add_cascade(label="Визуализатор",menu = fm)
+#добавить элементы в раскрывающееся меню fm
+fm.add_command(label="Настройка", command = settings)
+
+hm = Menu(m)
+m.add_cascade(label="Справка",menu = hm)
+hm.add_command(label="О программе",command = about)
 
 root.mainloop()
