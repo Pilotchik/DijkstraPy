@@ -166,16 +166,22 @@ def play():
     while checkHold():
         attempts += 1
 
-        if attempts > len(vert_array) + 1:
+        #if attempts > len(vert_array) + 1:
+        if attempts > 50:
             lbl["text"] = "Готово"
+            print(attempts)
             break
 
         min_length = 9999
         #найти следующую вершину из соседей
         for neighbors in getNeighbors(start_vertex):
-            if neighbors[1] < min_length:
+            if neighbors[1] < min_length and neighbors[0].hold == 0:
                 next_vertex = neighbors[0]
                 min_length = neighbors[1]
+
+        #если происходит постоянное зацикливание - то выходить
+        if next_vertex.number == start_vertex.number:
+            break
 
         #проход по соседям и пересчёт стоимости перехода в них
         for neighbors in getNeighbors(start_vertex):
@@ -185,11 +191,12 @@ def play():
                     #удалить старую метку
                     canv.delete("label"+str(neighbors[0].number))
                     #добавить текст со стоимостью перехода в вершину
-                    canv.create_text(neighbors[0].x - 15, neighbors[0].y - 20, text = str(neighbors[0].cost), tag = "label"+str(neighbors[0].number), font = "Arial 14", fill = "red")
+                    canv.create_text(neighbors[0].x - 15, neighbors[0].y - 20, text = str(neighbors[0].cost)+"_"+str(attempts), tag = "label"+str(neighbors[0].number), font = "Arial 14", fill = "red")
 
         start_vertex.hold = 1
-
+        canv.itemconfig("vert"+str(next_vertex.number),fill="yellow")
         start_vertex = next_vertex
+
 
 #создание окна для размещения вершин графа 
 root = Tk() 
